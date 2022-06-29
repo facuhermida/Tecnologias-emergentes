@@ -20,7 +20,7 @@ async def get_datos():
 
 @appRouter.post("/datos/")
 async def create_datos(dato: Dato):
-    new_dato = {"ID": dato.id, "Temperatura": dato.temperatura, "Humedad": dato.humedad}
+    new_dato = {"id": dato.id, "temperatura": dato.temperatura, "humedad": dato.humedad}
     conn.execute(datos.insert(new_dato))
 
 #max_hum    min_temp    min_hum     temp_max_by_qty     hum_max_by_qty     temp_min_by_qty     hum_min_by_qty
@@ -31,7 +31,7 @@ async def max_temp():
     rs = conn.execute("SELECT * FROM datos ORDER BY Temperatura DESC LIMIT 1").fetchall()
 
     fecha = date.today().strftime("%d/%m/%Y")
-    data = ({"Fecha": fecha, "Accion": "max_temp"})
+    data = ({"fecha": fecha, "accion": "max_temp"})
 
     conn.execute(logs.insert(data))
 
@@ -43,7 +43,7 @@ async def max_hum():
     rs = conn.execute("SELECT * FROM datos ORDER BY Humedad DESC LIMIT 1").fetchall()
 
     fecha = date.today().strftime("%d/%m/%Y")
-    data = ({"Fecha": fecha, "Accion": "max_hum"})
+    data = ({"fecha": fecha, "accion": "max_hum"})
 
     conn.execute(logs.insert(data))
 
@@ -56,7 +56,7 @@ async def min_temp():
     rs = conn.execute("SELECT * FROM datos ORDER BY Temperatura ASC LIMIT 1").fetchall()
 
     fecha = date.today().strftime("%d/%m/%Y")
-    data = ({"Fecha": fecha, "Accion": "min_temp"})
+    data = ({"fecha": fecha, "accion": "min_temp"})
 
     conn.execute(logs.insert(data))
 
@@ -68,7 +68,7 @@ async def min_hum():
     rs = conn.execute("SELECT * FROM datos ORDER BY Humedad ASC LIMIT 1").fetchall()
 
     fecha = date.today().strftime("%d/%m/%Y")
-    data = ({"Fecha": fecha, "Accion": "min_hum"})
+    data = ({"fecha": fecha, "accion": "min_hum"})
 
     conn.execute(logs.insert(data))
 
@@ -77,19 +77,19 @@ async def min_hum():
 @appRouter.get("/temp_max_by_qty")
 async def temp_max_by_qty():
 
-    return conn.execute("SELECT * FROM logs WHERE Accion='max_temp'").fetchall()
+    return conn.execute("SELECT COUNT(0) FROM logs WHERE Accion='max_temp'").fetchall()
 
 @appRouter.get("/hum_max_by_qty")
 async def hum_max_by_qty():
 
-    return conn.execute("SELECT * FROM logs WHERE Accion='max_hum'").fetchall()
+    return conn.execute("SELECT COUNT(0) FROM logs WHERE Accion='max_hum'").fetchall()
 
 @appRouter.get("/temp_min_by_qty")
 async def temp_min_by_qty():
 
-    return conn.execute("SELECT * FROM logs WHERE Accion='min_temp'").fetchall()
+    return conn.execute("SELECT COUNT(0) FROM logs WHERE Accion='min_temp'").fetchall()
 
 @appRouter.get("/hum_min_by_qty")
 async def hum_min_by_qty():
 
-    return conn.execute("SELECT * FROM logs WHERE Accion='min_hum'").fetchall()
+    return conn.execute("SELECT COUNT(0) FROM logs WHERE Accion='min_hum'").fetchall()
