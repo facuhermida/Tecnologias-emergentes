@@ -1,0 +1,11 @@
+Conectarse al server
+    ssh user@ip
+    User: pilar
+    IP:137.184.200.34
+    Pass: USALPilar2022
+
+Conexión a MySQL
+    mysql -u root -p
+    Pass: MySQLTECEm$2022
+
+Ejecución: uvicorn variable_que_almacena_FastApi:nombre_de_clase_donde_esta_la_variable --reload
