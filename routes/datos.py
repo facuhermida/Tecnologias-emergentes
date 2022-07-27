@@ -8,6 +8,8 @@ from models.models import datos, logs
 from schema.dato import Dato
 from schema.log import Log
 from sqlalchemy.sql import text
+from routes.MQTT_publisher import publicar
+from routes.MQTT_subscriber import subscribir
 #from schema.dato import Dato
 
 appRouter = APIRouter()
@@ -20,8 +22,10 @@ async def get_datos():
 
 @appRouter.post("/datos/")
 async def create_datos(dato: Dato):
-    new_dato = {"id": dato.id, "temperatura": dato.temperatura, "humedad": dato.humedad}
-    conn.execute(datos.insert(new_dato))
+    new_dato = {"id": dato.id, "temperatura": dato.temperatura, "humedad": dato.humedad, "latitud": dato.latitud, "longitud": dato.longitud}
+    #conn.execute(datos.insert(new_dato))
+
+    publicar("Grupo2", new_dato)
 
 #max_hum    min_temp    min_hum     temp_max_by_qty     hum_max_by_qty     temp_min_by_qty     hum_min_by_qty
 
@@ -34,6 +38,8 @@ async def max_temp():
     data = ({"fecha": fecha, "accion": "max_temp"})
 
     conn.execute(logs.insert(data))
+
+    publicar("Max temp", rs)
 
     return rs
 

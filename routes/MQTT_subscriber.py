@@ -6,13 +6,20 @@ def on_message(client, userdata, message):
 
 mqttBroker ="mqtt.eclipseprojects.io"
 
-client = mqtt.Client("Smartphone")
-client.connect(mqttBroker) 
+client = mqtt.Client("Grupo2sub")
 
-client.loop_start()
 
-client.subscribe("TEMPERATURE")
-client.on_message=on_message 
+def subscribir(dato, valor):
+    
+    client.connect(mqttBroker) 
+    
+    client.loop_start()
 
-time.sleep(30)
-client.loop_stop()
+    client.subscribe(dato)
+    client.on_message=on_message
+
+    time.sleep(30)
+    client.loop_stop()
+
+
+    
