@@ -10,5 +10,5 @@ def publicar(dato, valor):
     client = mqtt.Client("Grupo2")
     client.connect(mqttBroker) 
 
-    client.publish(dato, valor)
+    client.publish("Grupo2", valor)
     print("Cola:"+ dato +" - Valor: "+ valor)

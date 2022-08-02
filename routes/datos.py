@@ -25,7 +25,8 @@ async def create_datos(dato: Dato):
     new_dato = {"id": dato.id, "temperatura": dato.temperatura, "humedad": dato.humedad, "latitud": dato.latitud, "longitud": dato.longitud}
     #conn.execute(datos.insert(new_dato))
 
-    publicar("Grupo2", new_dato)
+    #Levantar proyecto en el server
+    publicar("Grupo2", "new_dato")
 
 #max_hum    min_temp    min_hum     temp_max_by_qty     hum_max_by_qty     temp_min_by_qty     hum_min_by_qty
 
