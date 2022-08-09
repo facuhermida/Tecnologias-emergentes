@@ -1,3 +1,4 @@
+import json
 import paho.mqtt.client as mqtt
 
 mqttBroker ="mqtt.eclipseprojects.io"
@@ -9,6 +10,8 @@ def publicar(dato, valor):
 
     client = mqtt.Client("Grupo2")
     client.connect("localhost") 
+
+    valor = json.sringify(valor)
 
     client.publish("Grupo2", valor)
     #print("Cola:"+ dato +" - Valor: "+ valor)
