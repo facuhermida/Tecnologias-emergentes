@@ -4,6 +4,7 @@ from typing import Optional
 class Dato(BaseModel):
 
     id: Optional[int]
+    fecha: str
     temperatura: float
     humedad: float
     latitud: int
