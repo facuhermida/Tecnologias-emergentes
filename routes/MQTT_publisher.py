@@ -11,7 +11,7 @@ def publicar(dato, valor):
     client = mqtt.Client("Grupo2")
     client.connect("localhost") 
 
-    valor = json.sringify(valor)
-
+    valor = json.dumps(valor, separators=(',', ':'))
+    
     client.publish("Grupo2", valor)
     #print("Cola:"+ dato +" - Valor: "+ valor)
