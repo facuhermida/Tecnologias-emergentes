@@ -29,8 +29,7 @@ async def create_datos(dato: Dato):
     #conn.execute(datos.insert({ "humedad": dato.humedad, "temperatura": dato.temperatura, "fecha": fecha, "longitud": dato.longitud, "latitud": dato.latitud})
     conn.execute(table('datos', column('humedad'), column('temperatura'), column('fecha'), column('longitud'), column('latitud')).insert().values({ "humedad": dato.humedad, "temperatura": dato.temperatura, "fecha": fecha, "longitud": dato.longitud, "latitud": dato.latitud}))
 
-    #Levantar proyecto en el server
-    #publicar("Grupo2", new_dato)
+    publicar("Grupo2", new_dato)
 
 #max_hum    min_temp    min_hum     temp_max_by_qty     hum_max_by_qty     temp_min_by_qty     hum_min_by_qty
 
@@ -79,7 +78,7 @@ async def temp_min_by_qty(cantidad):
     return conn.execute("SELECT * FROM datos ORDER BY Temperatura ASC LIMIT "+cantidad).fetchall()
 
 @appRouter.get("/hum_min_by_qty")
-async def hum_min_by_qty():
+async def hum_min_by_qty(cantidad):
 
     return conn.execute("SELECT * FROM datos ORDER BY Humedad ASC LIMIT "+cantidad).fetchall()
 

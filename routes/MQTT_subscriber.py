@@ -1,3 +1,4 @@
+import json
 import paho.mqtt.client as mqtt
 import time
 
@@ -20,8 +21,9 @@ def subscribir(dato, valor):
     client.subscribe(dato)
     client.on_message=on_message
 
+    
+
     time.sleep(30)
     client.loop_stop()
-
 
     
