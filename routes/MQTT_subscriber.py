@@ -13,7 +13,7 @@ Keep_Alive_Interval = 45
 MQTT_Topic = "Grupo2"
 
 #Subscribe to all Sensors at Base Topic
-def on_connect(mosq, obj, rc):
+def on_connect(mosq, obj, rc, properties=None):
 	mqttc.subscribe(MQTT_Topic, 0)
 
 #Save Data into DB Table
