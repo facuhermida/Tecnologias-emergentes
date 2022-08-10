@@ -10,7 +10,6 @@ from schema.log import Log
 from sqlalchemy.sql import text, table, column
 from routes.MQTT_publisher import publicar
 from routes.MQTT_subscriber import subscribir
-#from schema.dato import Dato
 
 appRouter = APIRouter()
 

@@ -11,24 +11,14 @@ meta = MetaData()
 
 conn = engine.connect()
 
-def insert_datos(jsonData):
-    datos = json.loads(jsonData)
-    fecha = datos['fecha']
-    temperatura = datos['temperatura']
-    humedad = datos['humedad']
-    latitud = datos['latitud']
-    longitud = datos['longitud']
+# def insert_datos(jsonData):
+#     datos = json.loads(jsonData)
+#     fecha = datos['fecha']
+#     temperatura = datos['temperatura']
+#     humedad = datos['humedad']
+#     latitud = datos['latitud']
+#     longitud = datos['longitud']
 
-    conn.execute(table('datos', column('humedad'), column('temperatura'), column('fecha'), column('longitud'), column('latitud')).insert().values({ "humedad": humedad, "temperatura": temperatura, "fecha": fecha, "longitud": longitud, "latitud": latitud}))
+#     conn.execute(table('datos', column('humedad'), column('temperatura'), column('fecha'), column('longitud'), column('latitud')).insert().values({ "humedad": humedad, "temperatura": temperatura, "fecha": fecha, "longitud": longitud, "latitud": latitud}))
 
-    print("Datos insertados")
-
-#SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
-#SQLALCHEMY_DATABASE_URL = "mysql://root:MySQLTECEm$2022@USAL/db"
-
-#engine = create_engine(
- #   SQLALCHEMY_DATABASE_URL
-#)
-#SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-#Base = declarative_base()
+#     print("Datos insertados")
