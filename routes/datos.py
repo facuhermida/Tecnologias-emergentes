@@ -27,9 +27,11 @@ async def create_datos(dato: Dato):
 
     new_dato = { "humedad": dato.humedad, "temperatura": dato.temperatura, "fecha": fecha, "longitud": dato.longitud, "latitud": dato.latitud}
     #conn.execute(datos.insert({ "humedad": dato.humedad, "temperatura": dato.temperatura, "fecha": fecha, "longitud": dato.longitud, "latitud": dato.latitud})
-    conn.execute(table('datos', column('humedad'), column('temperatura'), column('fecha'), column('longitud'), column('latitud')).insert().values({ "humedad": dato.humedad, "temperatura": dato.temperatura, "fecha": fecha, "longitud": dato.longitud, "latitud": dato.latitud}))
+    #conn.execute(table('datos', column('humedad'), column('temperatura'), column('fecha'), column('longitud'), column('latitud')).insert().values({ "humedad": dato.humedad, "temperatura": dato.temperatura, "fecha": fecha, "longitud": dato.longitud, "latitud": dato.latitud}))
 
     publicar("Grupo2", new_dato)
+
+    #subscribir("Grupo2", new_dato)
 
 #max_hum    min_temp    min_hum     temp_max_by_qty     hum_max_by_qty     temp_min_by_qty     hum_min_by_qty
 
